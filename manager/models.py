@@ -18,11 +18,6 @@ class TaskType(models.Model):
     name = models.CharField(max_length=150)
 
 
-class Priority(models.Model):
-    name = models.CharField(max_length=150)
-    difficulty = models.IntegerField()
-
-
 class User(AbstractUser):
     pass
 
