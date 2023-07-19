@@ -24,12 +24,14 @@ class User(AbstractUser):
 
 class Task(models.Model):
     title = models.CharField(max_length=150)
-    description = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, null=True)
     date = models.DateTimeField(auto_now_add=True)
     completed = models.BooleanField(default=False)
     priority = models.CharField(max_length=20,
                                 choices=PRIORITY_CHOICES,
-                                default="TO-DO")
+                                default="TO-DO",
+                                null=True
+                                )
     task_type = models.ForeignKey(to=TaskType, on_delete=models.CASCADE, related_name="tasks")
     owner = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="tasks")
 
@@ -37,8 +39,10 @@ class Task(models.Model):
 class Habit(models.Model):
     title = models.CharField(max_length=150)
     completed_times = models.IntegerField()
-    repeatability = models.IntegerField()
+    repeatability = models.IntegerField(default=7)
     difficulty = models.CharField(max_length=20,
                                   choices=DIFFICULTY_CHOICES,
-                                  default="TO-DO")
-    owner = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="tasks")
+                                  default="CAN BE",
+                                  null=True
+                                  )
+    owner = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="habits")
