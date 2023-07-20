@@ -53,3 +53,10 @@ class Habit(models.Model):
                                   null=True
                                   )
     owner = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="habits")
+
+
+class WeekTemplate(models.Model):
+    start_date = models.DateField(default=timezone.now)
+
+    def __str__(self):
+        return f"starts {self.start_date}"
