@@ -1,7 +1,12 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from manager.models import Task, Habit
+from .models import Task, Habit, User
+from .forms import UserCreationForm
 
 
 @login_required
@@ -16,3 +21,10 @@ def index(request):
     }
 
     return render(request, "manager/home.html", context=context)
+
+
+class UserCreateView(generic.CreateView):
+    model = User
+    form_class = UserCreationForm
+    template_name = "registration/registrate.html"
+    success_url = reverse_lazy("manager:home")
