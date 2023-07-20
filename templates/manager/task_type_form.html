@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} new Task</h1>
+  <h1>{{ object|yesno:"Update,Create" }} new Task Type</h1>
 
   <form action="" method="post">
     {% csrf_token %}

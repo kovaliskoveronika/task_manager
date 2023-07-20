@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>TASK TYPES
+    <a href="{% url 'manager:task-type-create' %}" class="btn btn-primary">Add new task type</a>
+  </h1>
+  {% if tasktype_list %}
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Update</th>
+          <th>DELETE</th>
+        </tr>
+        {% for type in tasktype_list %}
+          <tr>
+            <td>{{ type.name }}</td>
+            <td><a href="{% url 'manager:task-type-update' pk=type.id %}" class="btn btn-secondary">UPDATE</a></td>
+            <td>
+              <form method="post" action="{% url 'manager:task-type-delete' pk=type.id %}" onsubmit="return confirm('Are you sure you want to delete this task type?');">
+                {% csrf_token %}
+                <input type="submit" value="Delete" class="btn btn-danger">
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>You have no types yet</p>
+  {% endif %}
+{% endblock %}
