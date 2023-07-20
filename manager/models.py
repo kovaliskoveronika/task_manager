@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 PRIORITY_CHOICES = (
     ("TO-DO", "TO-DO"),
@@ -17,15 +18,20 @@ DIFFICULTY_CHOICES = (
 class TaskType(models.Model):
     name = models.CharField(max_length=150)
 
+    def __str__(self):
+        return self.name
+
 
 class User(AbstractUser):
-    pass
+
+    def __str__(self):
+        return self.username
 
 
 class Task(models.Model):
     title = models.CharField(max_length=150)
     description = models.CharField(max_length=255, null=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=timezone.now)
     completed = models.BooleanField(default=False)
     priority = models.CharField(max_length=20,
                                 choices=PRIORITY_CHOICES,

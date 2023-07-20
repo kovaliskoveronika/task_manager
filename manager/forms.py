@@ -1,9 +1,10 @@
+import datetime
+
 from django import forms
-from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from .models import User, Habit
+from .models import User, Habit, Task
 
 
 class UserCreateForm(UserCreationForm):
@@ -28,3 +29,20 @@ class HabitCreateForm(forms.ModelForm):
         if repeatability > 7:
             raise ValidationError("Habits repeatability must be less or equal 7")
         return repeatability
+
+
+class TaskCreateForm(forms.ModelForm):
+
+    class Meta:
+        model = Task
+        fields = ["title", "description", "date", "priority", "task_type"]
+        widgets = {
+            "date": forms.DateInput(attrs={'type': 'date'}),
+        }
+
+    def clean_date(self):
+        date = self.cleaned_data["date"]
+
+        if date.date() < datetime.date.today():
+            raise ValidationError("You can not plan past(")
+        return date

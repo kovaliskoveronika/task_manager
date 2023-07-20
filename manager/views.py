@@ -6,7 +6,7 @@ from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Task, Habit, User
-from .forms import UserCreateForm, HabitCreateForm
+from .forms import UserCreateForm, HabitCreateForm, TaskCreateForm
 
 
 @login_required
@@ -81,6 +81,47 @@ class HabitCompleteView(LoginRequiredMixin, View):
 
 class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
+    template_name = "manager/tasks_list.html"
 
     def get_queryset(self):
         return self.model.objects.filter(owner=self.request.user)
+
+
+class TaskCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Task
+    form_class = TaskCreateForm
+    template_name = "manager/task_form.html"
+    success_url = reverse_lazy("manager:task-list")
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
+class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Task
+    form_class = TaskCreateForm
+    template_name = "manager/task_form.html"
+    success_url = reverse_lazy("manager:task-list")
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
+class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Task
+    success_url = reverse_lazy("manager:task-list")
+
+
+class TaskCompleteView(LoginRequiredMixin, View):
+
+    def post(self, request, pk):
+        task = get_object_or_404(Task, pk=pk)
+
+        if "complete" in request.POST:
+            if not task.completed:
+                task.completed = True
+                task.save()
+
+        return redirect("manager:task-list")
