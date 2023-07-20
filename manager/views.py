@@ -1,12 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
+from django.utils import timezone
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Task, Habit, User, TaskType
-from .forms import UserCreateForm, HabitCreateForm, TaskCreateForm
+from .models import Task, Habit, User, TaskType, WeekTemplate
+from .forms import UserCreateForm, HabitCreateForm, TaskCreateForm, WeekTemplateForm
 
 
 @login_required
@@ -149,3 +149,54 @@ class TaskTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
 class TaskTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = TaskType
     success_url = reverse_lazy("manager:task-type-list")
+
+
+class WeekTemplateListView(LoginRequiredMixin, generic.ListView):
+    model = WeekTemplate
+    template_name = "manager/week_template_list.html"
+
+    def get_queryset(self):
+        return self.model.objects.filter(owner=self.request.user)
+
+
+class WeekTemplateCreateView(LoginRequiredMixin, generic.CreateView):
+    model = WeekTemplate
+    form_class = WeekTemplateForm
+    template_name = "manager/week_template_form.html"
+    success_url = reverse_lazy("manager:week-template-list")
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
+
+class WeekTemplateDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = WeekTemplate
+    success_url = reverse_lazy("manager:week-template-list")
+
+
+class WeekTemplateDetailView(View):
+    template_name = "manager/week_template_detail.html"
+
+    def get(self, request, *args, **kwargs):
+        week_template = get_object_or_404(WeekTemplate, id=self.kwargs["pk"])
+        days = self.get_days(week_template)
+        context = {
+            'week_template': week_template,
+            'days': days,
+        }
+        return render(request, self.template_name, context)
+
+    @staticmethod
+    def get_days(week_template):
+        days = []
+        current_date = week_template.start_date
+        for i in range(7):
+            day_data = {
+                'date': current_date,
+                'day_name': current_date.strftime('%A'),
+                'tasks': Task.objects.filter(date=current_date),
+            }
+            days.append(day_data)
+            current_date += timezone.timedelta(days=1)
+        return days

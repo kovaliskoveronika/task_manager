@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Week Template Detail - starts {{ week_template.start_date }}</h1>
+  <ul class="list-unstyled">
+    {% for day in days %}
+      <li><h3>{{ day.day_name }} </h3> {{ day.date }}</li>
+        <a href="{% url 'manager:task-create' %}" class="btn btn-primary">Add task</a>
+        <ul> <h4>Tasks: </h4>
+          {% for task in day.tasks.all %}
+           <li> <p>{{ task.title }}</p>
+             <form method="post" action="{% url 'manager:task-complete' pk=task.id %}">
+                {% csrf_token %}
+                <button id="checkButton{{ task.pk }}" class="btn btn-default" type="submit" name="complete" {% if task.completed %}disabled{% endif %}>
+                   {% if task.completed %}Done{% else %}Check if done{% endif %}
+                </button>
+              </form>
+           </li>
+          {% endfor %}
+        </ul>
+    {% endfor %}
+  </ul>
+{% endblock %}
