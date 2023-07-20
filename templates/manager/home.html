@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Home</h1>
+  <h2>Dynamic content</h2>
+  <p>Your progres</p>
+  <ul>
+      <li><strong>Tasks:</strong> {{ num_tasks }}</li>
+      <li><strong>Habits:</strong> {{ num_habits }}</li>
+  </ul>
+{% endblock %}

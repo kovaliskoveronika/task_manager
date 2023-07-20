@@ -38,7 +38,7 @@ class Task(models.Model):
 
 class Habit(models.Model):
     title = models.CharField(max_length=150)
-    completed_times = models.IntegerField()
+    completed_times = models.IntegerField(default=0)
     repeatability = models.IntegerField(default=7)
     difficulty = models.CharField(max_length=20,
                                   choices=DIFFICULTY_CHOICES,
