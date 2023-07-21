@@ -1,16 +1,25 @@
-<ul class="sidebar-nav list-group">
-  {% if user.is_authenticated %}
-    <li class="list-group-item">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
-    <li class="list-group-item"><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-  {% else %}
-    <li class="list-group-item"><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-  {% endif %}
 
-  <br>
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <h3>Task Manager</h3>
+  </div>
 
-  <li class="list-group-item"><a href="{% url 'manager:home' %}">Home</a></li>
-  <li class="list-group-item"><a href="{% url 'manager:habit-list' %}">Habits</a></li>
-  <li class="list-group-item"><a href="{% url 'manager:task-list' %}">Tasks</a></li>
-  <li class="list-group-item"><a href="{% url 'manager:task-type-list' %}">Task Types</a></li>
-  <li class="list-group-item"><a href="{% url 'manager:week-template-list' %}">Weeks</a></li>
-</ul>
+  <ul class="list-unstyled components">
+      <li class="active">
+          <a href="{% url 'manager:home' %}" data-toggle="collapse" aria-expanded="false">Home</a>
+
+      </li>
+      <li>
+          <a href="{% url 'manager:habit-list' %}">Habits</a>
+      </li>
+      <li>
+          <a href="{% url 'manager:task-list' %}">Tasks</a>
+      </li>
+      <li>
+        <a href="{% url 'manager:task-type-list' %}">Task Types</a>
+      </li>
+      <li>
+        <a href="{% url 'manager:week-template-list' %}">Weeks</a>
+      </li>
+  </ul>
+</nav>
