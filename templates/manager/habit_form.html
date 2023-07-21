@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>{{ object|yesno:"Update,Create" }} new Habit</h1>
+  <div class="my-form-container">
+    <h1 class="my-form-title">{{ object|yesno:"Update,Create" }} new Task</h1>
 
-  <form action="" method="post">
-    {% csrf_token %}
+    <form action="" method="post" class="my-form">
+      {% csrf_token %}
 
-    {{ form.as_p }}
+      {{ form.as_p }}
 
-    <input type="submit" value="Create" class="btn btn-primary">
-  </form>
+      <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+  </div>
 {% endblock %}
+

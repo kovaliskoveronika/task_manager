@@ -634,3 +634,32 @@ a {
   line-height: 35px;
   font-size: 0.9rem;
 }
+
+/* Center the form container */
+.my-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  background-color: #f8f8f8; /* Add your desired background color */
+  margin-top: 20px; /* Add margin to the top */
+}
+
+/* Style the form title */
+.my-form-title {
+  margin-bottom: 10px; /* Adjust the bottom margin as needed */
+  text-align: center;
+}
+
+/* Style the form */
+.my-form {
+  width: 400px; /* Adjust the width as needed */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #c5e8e8;
+}
+
+
+
