@@ -12,8 +12,8 @@ from .forms import UserCreateForm, HabitCreateForm, TaskCreateForm, WeekTemplate
 @login_required
 def index(request):
     """View function for the home page of the site."""
-    num_completed_tasks = Task.objects.filter(completed=True).count()
-    num_habits = Habit.objects.filter(completed_times__gte=7).count()
+    num_completed_tasks = Task.objects.filter(completed=True, owner_id=request.user.id).count()
+    num_habits = Habit.objects.filter(completed_times__gte=7, owner_id=request.user.id).count()
 
     context = {
         "num_tasks": num_completed_tasks,
