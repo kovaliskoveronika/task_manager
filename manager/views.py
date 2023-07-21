@@ -71,10 +71,8 @@ class HabitCompleteView(LoginRequiredMixin, View):
         habit = get_object_or_404(Habit, pk=pk)
 
         if "complete" in request.POST:
-            if not habit.is_completed_today:
-                habit.completed_times += 1
-                habit.is_completed_today = True
-                habit.save()
+            habit.completed_times += 1
+            habit.save()
 
         return redirect("manager:habit-list")
 
