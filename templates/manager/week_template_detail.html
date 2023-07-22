@@ -15,7 +15,7 @@
                         <div class="d-flex align-items-center mb-4 pb-4 border-bottom"><i class="far fa-calendar-alt fa-3x"></i>
                             <div class="ms-3">
                                 <h4 class="text-uppercase fw-weight-bold mb-0">{{ day.day_name }}
-                                  <a href="{% url 'manager:task-create' %}" class="button btn-create btn-sm">+</a>
+                                  <a href="{% url 'manager:task-week-create' pk=week_template.id %}" class="button btn-create btn-sm">+</a>
                                 </h4>
                                 <p class="text-gray fst-italic mb-0">{{ day.date }}</p>
                             </div>
@@ -26,11 +26,12 @@
                                     <span class="fst-italic pl-1 mb-0">{{ task.title }}</span>
                                     <form method="post" action="{% url 'manager:task-complete' pk=task.id %}">
                                         {% csrf_token %}
+                                        <input type="hidden" name="week_template_id" value="{{ week_template.id }}">
                                         <button id="checkButton{{ task.pk }}" class="btn btn-default btn-sm ms-2" type="submit" name="complete" {% if task.completed %}disabled{% endif %}>
                                             {% if task.completed %}Done{% else %}Check if done{% endif %}
                                         </button>
                                     </form>
-                                    <form method="post" action="{% url 'manager:task-delete' pk=task.id %}" onsubmit="return confirm('Are you sure you want to delete this task type?');">
+                                    <form method="post" action="{% url 'manager:task-week-delete' pk=task.id week_pk=week_template.id %}" onsubmit="return confirm('Are you sure you want to delete this task type?');">
                                       {% csrf_token %}
                                       <input type="submit" value="-" class="btn btn-danger btn-circle btn-circle-sm m-1">
                                     </form>

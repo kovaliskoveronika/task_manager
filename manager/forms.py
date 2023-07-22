@@ -28,6 +28,19 @@ class HabitCreateForm(forms.ModelForm):
         return repeatability
 
 
+class HabitSearchTitleForm(forms.ModelForm):
+    title = forms.CharField(
+        max_length=150,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by title..."})
+    )
+
+    class Meta:
+        model = Habit
+        fields = ["title"]
+
+
 class TaskCreateForm(forms.ModelForm):
 
     class Meta:
@@ -43,6 +56,45 @@ class TaskCreateForm(forms.ModelForm):
         if date.date() < datetime.date.today():
             raise ValidationError("You can not plan past(")
         return date
+
+
+class TaskWeekCreateForm(forms.ModelForm):
+
+    class Meta:
+        model = Task
+        fields = ["title", "description", "priority", "task_type"]
+        widgets = {
+            "date": forms.DateInput(attrs={'type': 'date'}),
+        }
+
+    def clean_date(self):
+        date = self.cleaned_data["date"]
+
+        if date.date() < datetime.date.today():
+            raise ValidationError("You can not plan past(")
+        return date
+
+
+class TaskSearchTitleForm(forms.ModelForm):
+    title = forms.CharField(
+        max_length=150,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by title..."})
+    )
+
+    class Meta:
+        model = Task
+        fields = ["title"]
+
+
+class TaskTypeSearchNameForm(forms.Form):
+    name = forms.CharField(
+        max_length=150,
+        required=False,
+        label="",
+        widget=forms.TextInput(attrs={"placeholder": "Search by name..."})
+    )
 
 
 class WeekTemplateForm(forms.ModelForm):
