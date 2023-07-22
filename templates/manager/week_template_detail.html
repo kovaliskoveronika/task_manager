@@ -8,14 +8,14 @@
             <h1 class="display-4">Week Template Detail - starts {{ week_template.start_date }}</h1>
         </header>
         <div class="row">
-          {% for day in days %}
+          {% for day in week_template.get_days %}
             <div class="col-lg-5 mx-auto mb-4">
                 <div class="card rounded border-0 shadow-sm position-relative">
                     <div class="card-body p-5">
                         <div class="d-flex align-items-center mb-4 pb-4 border-bottom"><i class="far fa-calendar-alt fa-3x"></i>
                             <div class="ms-3">
                                 <h4 class="text-uppercase fw-weight-bold mb-0">{{ day.day_name }}
-                                  <a href="{% url 'manager:task-week-create' pk=week_template.id %}" class="button btn-create btn-sm">+</a>
+                                  <a href="{% url 'manager:task-week-create' pk=week_template.id day_number=forloop.counter %}" class="button btn-create btn-sm">+</a>
                                 </h4>
                                 <p class="text-gray fst-italic mb-0">{{ day.date }}</p>
                             </div>

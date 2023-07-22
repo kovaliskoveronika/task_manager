@@ -60,4 +60,22 @@ class WeekTemplate(models.Model):
     owner = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="week_templates")
 
     def __str__(self):
-        return f"starts {self.start_date}"
+        return f"Week Template - starts {self.start_date}"
+
+    def get_days(self):
+        days = []
+        current_date = self.start_date
+        for i in range(7):
+            day_data = {
+                "date": current_date,
+                "day_name": current_date.strftime("%A"),
+                "tasks": Task.objects.filter(date=current_date),
+            }
+            days.append(day_data)
+            current_date += timezone.timedelta(days=1)
+        return days
+
+    def get_day_by_number(self, day_number):
+        if day_number < 1 or day_number > 7:
+            raise ValueError("Invalid day number")
+        return self.start_date + timezone.timedelta(days=day_number - 1)

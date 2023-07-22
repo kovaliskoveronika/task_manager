@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy, reverse
-from django.utils import timezone
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -144,8 +143,9 @@ class TaskWeekCreateView(generic.FormView):
 
     def form_valid(self, form):
         week_template = get_object_or_404(WeekTemplate, id=self.kwargs["pk"])
+        date = self.kwargs["day_number"]
         task = form.save(commit=False)
-        task.date = week_template.start_date
+        task.date = week_template.get_day_by_number(date)
         task.owner = self.request.user
         task.save()
         return super().form_valid(form)
@@ -261,23 +261,7 @@ class WeekTemplateDetailView(View):
 
     def get(self, request, *args, **kwargs):
         week_template = get_object_or_404(WeekTemplate, id=self.kwargs["pk"])
-        days = self.get_days(week_template)
         context = {
-            'week_template': week_template,
-            'days': days,
+            "week_template": week_template,
         }
         return render(request, self.template_name, context)
-
-    @staticmethod
-    def get_days(week_template):
-        days = []
-        current_date = week_template.start_date
-        for i in range(7):
-            day_data = {
-                'date': current_date,
-                'day_name': current_date.strftime('%A'),
-                'tasks': Task.objects.filter(date=current_date),
-            }
-            days.append(day_data)
-            current_date += timezone.timedelta(days=1)
-        return days
