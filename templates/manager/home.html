@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="counter">
+                <div class="counter-icon">
+                    <i class="fa fa-briefcase"></i>
+                </div>
+                <div class="counter-content">
+                    <h3>Tasks</h3>
+                    <span class="counter-value">{{ num_tasks }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="counter red">
+                <div class="counter-icon">
+                    <i class="fa fa-globe"></i>
+                </div>
+                <div class="counter-content">
+                    <h3>Habits</h3>
+                    <span class="counter-value">{{ num_habits }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

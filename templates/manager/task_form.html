@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="my-form-container">
+    <h1 class="my-form-title">{{ object|yesno:"Update,Create" }} new Task</h1>
+
+    <form action="" method="post" class="my-form">
+      {% csrf_token %}
+
+      {{ form.as_p }}
+
+      <input type="submit" value="Save" class="btn btn-primary">
+    </form>
+  </div>
+{% endblock %}
+

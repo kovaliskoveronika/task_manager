@@ -1,0 +1,9 @@
+{% load crispy_forms_filters %}
+<form action="" class="form-inline d-flex align-items-center">
+  {% csrf_token %}
+   <div class="main-search-input-item">
+    {{ search_form|crispy }}
+   </div>
+  <input type="submit" value="Search" class="btn btn-secondary ml-2 button btn-update">
+</form>
+
