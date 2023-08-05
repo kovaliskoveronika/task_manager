@@ -4,11 +4,7 @@ Django project for tracking habit and managing plans
 
 ## Check it out
 
-(link on project)
-
-```shell
-curl https://raw.githubusercontent.com/jehna/readme-best-practices/master/README-default.md > README.md
-```
+[Task manger deployed on Render](https://task-manager-k3if.onrender.com)
 
 ## Installations
 Python must b installed
