@@ -7,14 +7,31 @@ Django project for tracking habit and managing plans
 [Task manger deployed on Render](https://task-manager-k3if.onrender.com)
 
 ## Installations
-Python must b installed
+Python must be installed
 
-```shell
+### Clone the repsitory
+```python
 git clone https://github.com/kovaliskoveronika/task_manager.git
+```
+### Create virtual enviroment
+```python
 python -m venv
+```
+for Windows
+```python
 venv/Scripts/activate
+```
+for Linux/MacOS
+```python
+source env/bin/activate
+```
+### Install requirements
+```python
 pip install -r requirements.txt
-python manage.py runserver #to start project
+```
+### Run project
+```python
+python manage.py runserve
 ```
 
 ## Features
