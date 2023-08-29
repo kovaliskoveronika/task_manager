@@ -25,11 +25,19 @@ python manage.py runserver #to start project
 * Make plan for week
 
 ## Demo
-[!Website interface](main_page.PNG)
-[!Login](login_page.PNG)
-[!Sign in](create_user_page.PNG)
-[!Habits](habits_list_page.PNG)
-[!Tasks](tast_list_page.PNG)
-[!Task types](tast_types_list_page.PNG)
-[!Weeks](week_list_page.PNG)
-[!Week](week_detail_page.PNG)
+### Main page
+![Home](https://monosnap.com/file/nmSIEmbVUH5K4AX2UtZo08HevsAZi1)
+### Log in
+[!Login](https://monosnap.com/file/QbHakWqV0SqpNmqneiL5A3OZR8h65s)
+### Sign in
+[!Sign in](https://monosnap.com/file/fdopDsUfJFzkpV5GDFBnKUJJvxo7Lx)
+### Habits list page
+[!Habits](https://monosnap.com/file/iXSI89AZgQ07KRVTTuPGauRBrQP7bq)
+### Task list page
+[!Tasks](https://monosnap.com/file/XpmZJL1H6Ny2y3tL0mT4yUpT7IwGmF)
+### Task types list page
+[!Task types](https://monosnap.com/file/ckTfIJRNUFEGYRCTRgKu8PDmuZsef7)
+### Week list page
+[!Weeks](https://monosnap.com/file/XAYBp0bJaH2S4snHcJep1N5Ib7JYj6)
+### Week detail page
+[!Week](https://monosnap.com/file/8vmfON05YEfSvaGSqB8VrQpQkmXoQm)
