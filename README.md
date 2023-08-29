@@ -26,18 +26,18 @@ python manage.py runserver #to start project
 
 ## Demo
 ### Main page
-![Home](https://monosnap.com/file/nmSIEmbVUH5K4AX2UtZo08HevsAZi1)
+![Home](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/main_page.PNG)
 ### Log in
-[!Login](https://monosnap.com/file/QbHakWqV0SqpNmqneiL5A3OZR8h65s)
+[!Login](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/login_page.PNG)
 ### Sign in
-[!Sign in](https://monosnap.com/file/fdopDsUfJFzkpV5GDFBnKUJJvxo7Lx)
+[!Sign in](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/create_user_page.PNG)
 ### Habits list page
-[!Habits](https://monosnap.com/file/iXSI89AZgQ07KRVTTuPGauRBrQP7bq)
+[!Habits](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/habits_list_page.PNG)
 ### Task list page
-[!Tasks](https://monosnap.com/file/XpmZJL1H6Ny2y3tL0mT4yUpT7IwGmF)
+[!Tasks](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/tast_list_page.PNG)
 ### Task types list page
-[!Task types](https://monosnap.com/file/ckTfIJRNUFEGYRCTRgKu8PDmuZsef7)
+[!Task types](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/tast_types_list_page.PNG)
 ### Week list page
-[!Weeks](https://monosnap.com/file/XAYBp0bJaH2S4snHcJep1N5Ib7JYj6)
+[!Weeks](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/week_list_page.PNG)
 ### Week detail page
-[!Week](https://monosnap.com/file/8vmfON05YEfSvaGSqB8VrQpQkmXoQm)
+[!Week](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/week_detail_page.PNG)
