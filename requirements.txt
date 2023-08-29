@@ -1,0 +1,14 @@
+asgiref
+crispy-bootstrap4
+dj-database-url
+Django==3.2
+django-crispy-forms
+django-debug-toolbar
+gunicorn
+packaging
+psycopg2
+pytz
+sqlparse
+typing_extensions
+tzdata
+whitenoise
