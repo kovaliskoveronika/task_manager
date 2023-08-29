@@ -2,17 +2,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
 
-PRIORITY_CHOICES = (
-    ("TO-DO", "TO-DO"),
-    ("URGENT", "URGENT"),
-    ("OPTIONAL", "OPTIONAL"),
-)
-
-DIFFICULTY_CHOICES = (
-    ("EASY", "EASY"),
-    ("CAN BE", "CAN BE"),
-    ("HARD WORK", "HARD WORK"),
-)
+from constants import PRIORITY_CHOICES, DIFFICULTY_CHOICES
 
 
 class TaskType(models.Model):

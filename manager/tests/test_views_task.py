@@ -98,4 +98,3 @@ class TaskPrivateTests(TestCase):
         self.task.refresh_from_db()
 
         self.assertTrue(self.task.completed)
-
