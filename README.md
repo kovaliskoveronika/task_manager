@@ -24,6 +24,17 @@ python manage.py runserver #to start project
 * See progress
 * Make plan for week
 
+## Test user
+This project is able only for registered users, so here are credentials for test user
+####Username
+```shell
+test_user
+```
+####Password
+```shell
+test_pass1
+```
+
 ## Demo
 ### Main page
 ![Home](https://github.com/kovaliskoveronika/task_manager/blob/adb8990777d84302460b269d24ececacecf2a713/main_page.PNG)
