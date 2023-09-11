@@ -15,7 +15,7 @@ git clone https://github.com/kovaliskoveronika/task_manager.git
 ```
 ### Create a virtual environment
 ```python
-python -m venv
+python3 -m venv venv
 ```
 for Windows
 ```python
@@ -29,6 +29,8 @@ source env/bin/activate
 ```python
 pip install -r requirements.txt
 ```
+### Create .env file and define variables following .env.sample
+
 ### Run migrations
 ```python
 python manage.py migrate
